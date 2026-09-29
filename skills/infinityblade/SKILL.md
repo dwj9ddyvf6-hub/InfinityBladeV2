@@ -98,3 +98,4 @@ Include concise receipts: tested action, artifact/environment, expected result, 
 - For recurring operational failure patterns and how to turn one-off repairs into portable safeguards, read [references/lessons-from-the-field.md](references/lessons-from-the-field.md).
 - When reviewing an existing diff or claimed completion, read [references/review-mode.md](references/review-mode.md).
 - When examples would resolve ambiguity about behavior or reporting, read [references/examples.md](references/examples.md).
+- To smoke-test activation boundaries and safe behavior after an update, use [references/eval-cases.md](references/eval-cases.md).

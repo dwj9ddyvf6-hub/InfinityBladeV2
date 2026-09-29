@@ -34,3 +34,5 @@ Use $infinityblade. State the five SCOPE fields for this task before making a ma
 
 Correct discovery produces Surface, Constraints, Outcome, Proof, and Edges, followed by evidence-matched completion reporting.
 
+For a quick behavior check after installation or an update, run the representative activation, non-activation, incomplete-input, and safety cases in [`skills/infinityblade/references/eval-cases.md`](skills/infinityblade/references/eval-cases.md).
+
