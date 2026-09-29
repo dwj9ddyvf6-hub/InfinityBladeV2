@@ -39,10 +39,12 @@ These gates exist to prevent plausible but false completion claims:
 2. Form a testable hypothesis and run the cheapest check that can discriminate it.
 3. Make the **Minimum Sufficient Change** at the demonstrated source of failure.
 4. Preserve verified authoritative paths, unrelated user changes, safety controls, permissions, validation, error handling, accessibility, and recovery behavior.
-5. When failures repeat or performance is poor, measure the complete path and seek an **Efficiency Breakthrough** by repairing its dominant structural constraint.
+5. When failures repeat or performance is poor, measure the complete path and seek an **Efficiency Breakthrough** by repairing its dominant structural constraint. Separate queue wait from execution; distinguish asynchronous scheduling from actual CPU parallelism, batch size from concurrency limits, managed heap from native/process memory, and ephemeral cache from durable evidence. Measure provider and database budgets, retries, fan-out, and cache freshness as separate stages.
 6. Treat route failure as information, not task impossibility. Revise the hypothesis and pursue safe authorized alternatives.
 7. Prevent spirals: do not repeat equivalent actions without new evidence, expand the repair surface without a moved failure boundary, or add machinery merely to bypass an unlocated defect.
 8. Remain inside authorization. Persistence does not permit destructive action, privilege bypass, invented access, external publication, live transactions, or unrelated changes.
+
+For multi-stage data and event pipelines, bound workers, batches, retries, and downstream requests to the capacity of the next boundary, and prioritize freshness-critical work over bulk work. Reuse canonical immutable evidence and deduplicate in-flight work by its full identity; do not reacquire or recalculate the same fact per consumer. An optimization must preserve the evidence contract: never improve timing or coverage by weakening identity, completed-bar, warm-up, authorization, or completeness gates, or by inventing missing data. Keep one authoritative writer when parallel workers calculate from shared state. Move only advisory work off a critical response path; when durable evidence is required for cold-start recovery, persist it before claiming that boundary complete. Test representative before/after workloads and replay/restart behavior, and label synthetic capacity proof separately from authenticated production load. See [the pipeline case study](references/lessons-from-the-field.md#11-efficiency-breakthrough-must-preserve-the-evidence-contract) for examples.
 
 ## Field-derived safeguards
 
