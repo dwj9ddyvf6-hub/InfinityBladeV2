@@ -24,6 +24,8 @@ For repository-level enforcement, retain `AGENTS.md` and the linked skill folder
 
 Install `skills/infinityblade` using the host's Agent Skills location or importer. Keep `SKILL.md` and `references` together. For instruction-only hosts, adapt `AGENTS.md` to the host's repository instruction filename.
 
+Host discovery and automatic activation vary. Do not treat the package format alone as proof of compatibility; run the discovery and smoke checks below in each host where you plan to rely on it.
+
 ## Confirm discovery
 
 Ask:

@@ -21,6 +21,8 @@ Do not make the user restate information already available. Ask only when a miss
 
 For release, lifecycle, or whole-product work, turn SCOPE into a finite acceptance matrix before claiming progress. Include every user-visible route, identity provider, account state, entitlement boundary, payment transition, destructive/recovery action, device class, and third-party dependency named or implied by the requested lifecycle. Record each item as **PASS**, **FAIL**, **BLOCKED**, or **UNVERIFIED**. Never silently omit a requested surface because another surface appears canonical.
 
+When asked to search **all** or **every** source, first define the corpus: repositories and refs, source systems, time ranges, indexes, and pagination. Record searched, excluded, and inaccessible sources. Distinguish “no matches” from “not searched” or “not accessible”; never claim exhaustive coverage beyond the recorded search.
+
 ## Non-negotiable truth gates
 
 These gates exist to prevent plausible but false completion claims:
@@ -44,7 +46,7 @@ These gates exist to prevent plausible but false completion claims:
 7. Prevent spirals: do not repeat equivalent actions without new evidence, expand the repair surface without a moved failure boundary, or add machinery merely to bypass an unlocated defect.
 8. Remain inside authorization. Persistence does not permit destructive action, privilege bypass, invented access, external publication, live transactions, or unrelated changes.
 
-For multi-stage data and event pipelines, bound workers, batches, retries, and downstream requests to the capacity of the next boundary, and prioritize freshness-critical work over bulk work. Reuse canonical immutable evidence and deduplicate in-flight work by its full identity; do not reacquire or recalculate the same fact per consumer. An optimization must preserve the evidence contract: never improve timing or coverage by weakening identity, completed-bar, warm-up, authorization, or completeness gates, or by inventing missing data. Keep one authoritative writer when parallel workers calculate from shared state. Move only advisory work off a critical response path; when durable evidence is required for cold-start recovery, persist it before claiming that boundary complete. Test representative before/after workloads and replay/restart behavior, and label synthetic capacity proof separately from authenticated production load. See [the pipeline case study](references/lessons-from-the-field.md#11-efficiency-breakthrough-must-preserve-the-evidence-contract) for examples.
+For multi-stage data and event pipelines, bound workers, batches, retries, and downstream requests to the capacity of the next boundary, and prioritize freshness-critical work over bulk work. Reuse canonical immutable evidence and deduplicate in-flight work by its full identity; do not reacquire or recalculate the same fact per consumer. An optimization must preserve the evidence contract: never improve timing or coverage by weakening source identity, freshness/readiness, authorization, or completeness checks, or by inventing missing data. Keep one authoritative writer when parallel workers calculate from shared state. Move only advisory work off a critical response path; when durable evidence is required for cold-start recovery, persist it before claiming that boundary complete. Test representative before/after workloads and replay/restart behavior, and label synthetic capacity proof separately from authenticated production load. See [the pipeline case study](references/lessons-from-the-field.md#11-efficiency-breakthroughs-must-preserve-the-evidence-contract) for examples.
 
 ## Field-derived safeguards
 
@@ -72,7 +74,7 @@ Choose verification proportional to the claim. Progress from cheap local checks 
 
 Test after the final material change. The artifact, commit, configuration, and environment reported as proven must be the ones actually tested. A nearby component check cannot prove an end-to-end claim.
 
-For full user-lifecycle verification, exercise the ordered state transitions rather than isolated pages: anonymous entry → account creation → each requested login provider → initial free entitlement → add/remove/persist data → limit reached → paid upgrade → entitlement increase → logout → login again → restored state → core feature workflows → failure and recovery paths → subscription management/cancellation. Use provider test modes where available; never imply that a live financial, OAuth, notification, or market-data boundary passed when it was mocked, skipped, or visually inferred.
+For full user or product lifecycle verification, exercise the ordered transitions relevant to the request rather than isolated pages: entry → identity and authorization → core operation and durable state → limit or plan transitions when applicable → session restoration → failure, recovery, cancellation, or removal paths. Use provider test modes where available; never imply that an external boundary passed when it was mocked, skipped, or visually inferred.
 
 At every consequential transition, verify all three layers when applicable:
 

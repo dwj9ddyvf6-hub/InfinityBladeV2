@@ -2,7 +2,7 @@
 
 This guide supplements the core InfinityBlade skill. It distills recurring failure patterns from real agent work across software changes, research pipelines, generated artifacts, browser workflows, publishing, and backups. Examples are anonymized without discarding useful technical substance. Exclude personal names or contact details that are not intended for publication, account identifiers, credentials, private conversations, and machine-specific paths. Retain workload measurements when they explain the diagnosis; describe their scope so readers do not mistake them for universal benchmarks.
 
-Before sharing a revision, scan both the current files and reachable Git history. Replacing a name in the current file does not remove it from older commits or author metadata.
+Before sharing a revision, scan current files, every reachable ref, and commit metadata. After rewriting history, also test known old commit/blob URLs through the host's API and raw-file routes, and check cached views and pull-request/fork references where accessible. A clean branch does not prove that old objects are inaccessible. Request the host's sensitive-data removal process when eligible, and report any copies or caches that remain outside the verified scope.
 
 The central lesson is simple: **when a failure repeats, improve the system’s memory and proof—not merely the next prompt.** Convert each incident into a precise invariant, a discriminating check, and a durable place where the next agent will find it.
 
@@ -56,11 +56,11 @@ The central lesson is simple: **when a failure repeats, improve the system’s m
 
 **Countermeasure:** Treat each sentence as a claim with a source. Validate narrative fields independently against the canonical measurements and definitions, including change-versus-level semantics and configured thresholds. Check coverage, grammar, uniqueness, and identity across the full batch. For factual updates, use verifiable sources; include only relevant confirmed developments, and omit the line rather than inventing or padding when nothing qualifies. Variation in wording must never weaken factual consistency.
 
-### 9. A local copy is not proof of cloud backup
+### 9. A copied backup is not proof of recoverability
 
 **Failure pattern:** Files exist in a sync folder but uploads remain pending, locked files were skipped, the cloud listing is incomplete, or a “complete” status file is stale. Removing the local source too early can turn a partial copy into data loss.
 
-**Countermeasure:** Measure free-space headroom and active jobs before a large copy. Use resumable incremental passes and bounded status reporting. Preserve source data while transfer is pending. Verify the remote destination independently with file counts, sizes, checksums, or the provider’s authoritative sync state; check locked-file exceptions explicitly. Only reclaim or offload the source after the remote copy is confirmed.
+**Countermeasure:** Measure free-space headroom and active jobs before a large copy. Use resumable incremental passes and bounded status reporting. Preserve source data while transfer is pending. Verify the remote destination independently with file counts, sizes, checksums, or the provider’s authoritative sync state; check locked-file exceptions explicitly. Then restore representative data into an isolated clean location and verify that it is usable. A remote listing or matching hash proves transfer, not recovery. Only reclaim or offload the source after both transfer and restore checks pass.
 
 ### 10. Knowledge in chat does not reliably survive a handoff
 
@@ -100,6 +100,12 @@ An identity audit also found that one global event key had been fingerprinted wi
 
 **Proof discipline:** Report the exact workload, concurrency, environment, completion count, latency/memory measure, and whether evidence is synthetic, source-level, deployed, or externally observed. Do not compare unlike probes as a precise speedup, infer a live host state from a source test, or claim customer-scale capacity from a fixture. Add a regression test for the invariant and rerun the original workload after the final change.
 
+### 12. A comprehensive search needs a coverage ledger
+
+**Failure pattern:** An agent searches the sources it can see, receives an empty result from one index, or stops at an inaccessible repository, then reports that it searched “everything.” Missing access or incomplete pagination is mistaken for absence.
+
+**Countermeasure:** Define the corpus before searching: source systems, repositories and refs, relevant time ranges, search terms or file classes, and pagination boundaries. Record each source as searched, excluded, unavailable, or not yet checked. Reconcile the ledger before making an exhaustive claim; say “no matches in the sources checked” when that is all the evidence supports.
+
 ## The incident-to-doctrine loop
 
 Use this loop whenever the same class of failure returns, or whenever a workflow spans multiple tools or durable states:
@@ -121,6 +127,7 @@ If no action can be named that will either solve the problem or distinguish comp
 Outcome and authorized scope:
 Protected state:
 Authoritative inputs / version / hashes:
+Search coverage (when comprehensive discovery is requested): searched / excluded / unavailable / pagination:
 Target identities and idempotency key (if batched):
 Expected state:
 Observed state:

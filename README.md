@@ -28,6 +28,8 @@ Use $infinityblade to diagnose and repair this failure. Report GREEN only with o
 
 The skill supports ordinary execution, complex incident handling, and completion review while loading detailed references only when needed. See [INSTALL.md](INSTALL.md) for setup and discovery verification.
 
+The package follows the Agent Skills layout, but host discovery and automatic activation vary. Codex setup is documented here; on another host, treat compatibility as unverified until that host discovers the skill and the relevant smoke cases pass.
+
 ---
 
 ## The problem it solves
@@ -89,6 +91,8 @@ Before modifying anything, establish:
 SCOPE is both an acronym and a boundary. It prevents a bounded repair from silently turning into a rewrite, migration, or architecture project.
 
 If the task cannot be stated this way, the agent does not yet understand it well enough to change the system safely.
+
+For requests to search **all** or **every** source, define the search corpus first: repositories and refs, source systems, time ranges, indexes, and pagination. Record what was searched, excluded, or inaccessible. An empty result or unavailable index is not proof that a source contains nothing, and an exhaustive claim must not exceed the recorded coverage.
 
 ### 2. Outcome before activity
 
