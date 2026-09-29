@@ -4,7 +4,7 @@
 
 > **Infinite routes. One standard of proof.**
 
-[Install](INSTALL.md) · [Canonical skill](skills/infinityblade/SKILL.md) · [Repository instructions](AGENTS.md) · [License](LICENSE)
+[Install](INSTALL.md) · [Canonical skill](skills/infinityblade/SKILL.md) · [Field lessons](skills/infinityblade/references/lessons-from-the-field.md) · [Repository instructions](AGENTS.md) · [License](LICENSE)
 
 AI coding agents are remarkably capable. They are also prone to a dangerous pattern:
 
@@ -20,7 +20,7 @@ Its governing rule is simple:
 
 ## Use it as an agent skill
 
-InfinityBlade is packaged as a portable Agent Skill, not merely a prompt. Install `skills/infinityblade` in a compatible agent host, or retain `AGENTS.md` for repository-level enforcement.
+InfinityBlade is packaged as a portable Agent Skill, not merely a prompt. Install `skills/infinityblade` in a compatible agent host, or retain `AGENTS.md` for repository-scoped agent guidance. `AGENTS.md` is instructional unless a CI check or platform rule separately enforces it.
 
 ```text
 Use $infinityblade to diagnose and repair this failure. Report GREEN only with outcome-level evidence from the final artifact.
@@ -61,7 +61,7 @@ flowchart TD
 
 ## The InfinityBlade doctrine
 
-The system consists of ten mutually reinforcing rules. None of them is sufficient alone.
+The system has ten named operating principles. “Outcome before activity” and “Report facts, not confidence” are supporting sections that make those principles usable. None is sufficient alone.
 
 | Doctrine | Governing question |
 | --- | --- |
@@ -430,6 +430,8 @@ The difference is not more ceremony. It is refusing to confuse activity with pro
 - It is not a substitute for domain expertise or human authorization.
 
 It is a disciplined agreement: define the outcome, protect the scope, repair the real failure, and show the evidence.
+
+For recurring failure patterns that often defeat otherwise capable agents—and the durable countermeasures learned from them—see [Lessons from the field](skills/infinityblade/references/lessons-from-the-field.md).
 
 ---
 
